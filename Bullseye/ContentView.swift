@@ -7,10 +7,34 @@
 
 import SwiftUI
 
+class HeyThere {
+    var message: String
+
+    init(_ msg: String) {
+        message = msg
+    }
+    
+    func salute(_ name: String){
+        print("Hi \(name), \(self.message)")
+    }
+}
+
 /// Main View
 struct ContentView: View {
     
+    //: Use `@State` to indicate that this should refresh the view when modified
     @State var showAlert: Bool = false
+    
+    func buttonAction() -> Void {
+        print("Hey there")
+        let hi = HeyThere("Queso")
+        hi.salute("Jorge")
+        self.showAlert = true
+    }
+    
+    func s() -> some View {
+        return Spacer()
+    }
     
     var body: some View {
         VStack {
@@ -18,16 +42,46 @@ struct ContentView: View {
                 .fontWeight(.semibold)
                 .foregroundColor(Color.green)
                 .padding()
-            Button(action: {
-                print("Pressed!")
-                self.showAlert = true
-            }) {
-                Text("Hit Me")
+            HStack {
+                Text("Put the bullseye as close as you can to:")
+                Text("100")
+                    .fontWeight(.heavy)
+            }.padding()
+            
+            HStack {
+                Text("1")
+                Slider(value: .constant(10))
+                Text("100")
             }
-            .alert(isPresented: $showAlert) {
-                () -> Alert in
-                return Alert(title: Text("Hello there"), message: Text("First pop up!"), dismissButton: .default(Text("Awsome")))
+            
+            Button(action: self.buttonAction) {
+                Text("Hit Me!")
             }
+                .padding()
+                .alert(isPresented: $showAlert) {
+                    () -> Alert in
+                        return Alert(
+                            title: Text("Hello there"),
+                            message: Text("First pop up!"),
+                            dismissButton: .default(Text("Awsome"))
+                        )
+                }
+            HStack {
+                Button(action:{}) {
+                    Text("Start Over")
+                }
+                s()
+                Text("Score: ")
+                Text("999999")
+                s()
+                Text("Round: ")
+                Text("999")
+                s()
+                Button(action:{}){
+                    Text("Info")
+                }
+            }.padding(.bottom, 20)
+            
         }
     }
 }
@@ -35,5 +89,11 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewLayout(
+                .fixed(
+                    width: 896,
+                    height: 414
+                )
+            )
     }
 }
