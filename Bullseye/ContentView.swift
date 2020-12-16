@@ -24,6 +24,7 @@ struct ContentView: View {
     
     //: Use `@State` to indicate that this should refresh the view when modified
     @State var showAlert: Bool = false
+    @State var sliderValue: Float = 50.0
     
     func buttonAction() -> Void {
         print("Hey there")
@@ -50,7 +51,7 @@ struct ContentView: View {
             
             HStack {
                 Text("1")
-                Slider(value: .constant(10))
+                Slider(value: $sliderValue)
                 Text("100")
             }
             
@@ -62,7 +63,7 @@ struct ContentView: View {
                     () -> Alert in
                         return Alert(
                             title: Text("Hello there"),
-                            message: Text("First pop up!"),
+                            message: Text("The slider value is \(self.sliderValue)"),
                             dismissButton: .default(Text("Awsome"))
                         )
                 }
