@@ -25,11 +25,9 @@ struct ContentView: View {
     //: Use `@State` to indicate that this should refresh the view when modified
     @State var showAlert: Bool = false
     @State var sliderValue: Float = 50.0
+    @State var targetValue: Float = Float.random(in: 1...100)
     
     func buttonAction() -> Void {
-        print("Hey there")
-        let hi = HeyThere("Queso")
-        hi.salute("Jorge")
         self.showAlert = true
     }
     
@@ -43,9 +41,13 @@ struct ContentView: View {
                 .fontWeight(.semibold)
                 .foregroundColor(Color.green)
                 .padding()
+            Button(action: {}) {
+                Text("Que onda dude")
+                    .fontWeight(.bold)
+            }
             HStack {
                 Text("Put the bullseye as close as you can to:")
-                Text("100")
+                Text("\(self.targetValue)")
                     .fontWeight(.heavy)
             }.padding()
             
@@ -84,6 +86,9 @@ struct ContentView: View {
             }.padding(.bottom, 20)
             
         }
+    }
+    func getPointsForCurrentRound() -> Int {
+        return abs(Int(self.targetValue) - Int(self.sliderValue))
     }
 }
 
