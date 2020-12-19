@@ -37,16 +37,14 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Bullseye App")
+            Text("🎯 Bullseye App")
+                .font(.title)
                 .fontWeight(.semibold)
                 .foregroundColor(Color.green)
                 .padding()
-            Button(action: {}) {
-                Text("Que onda dude")
-                    .fontWeight(.bold)
-            }
             HStack {
                 Text("Put the bullseye as close as you can to:")
+                    .fontWeight(.ultraLight)
                 Text("\(self.targetValue)")
                     .fontWeight(.heavy)
             }.padding()
