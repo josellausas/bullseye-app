@@ -100,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				D7CE9FCD258EA847004A44D4 /* App */,
-				D7CE9FD2258EA89C004A44D4 /* Models */,
 				D7CE9FCE258EA84D004A44D4 /* Views */,
+				D7CE9FD2258EA89C004A44D4 /* Models */,
 				D71F7E64258582D500AF087A /* Preview Content */,
 			);
 			path = Bullseye;

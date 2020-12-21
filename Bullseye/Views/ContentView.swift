@@ -23,10 +23,6 @@ struct ContentView: View {
     self.isAlertVisible = true
   }
   
-  func s() -> some View {
-    return Spacer()
-  }
-  
   func titleTextView(_ text: String) -> some View {
     return Text(text)
       .font(.title)
@@ -45,17 +41,17 @@ struct ContentView: View {
       .font(.title3)
   }
   
-  func targetValueTextView() -> some View {
-    return Text("\(self.game.target)")
+  func targetValueTextView(_ targetValue: String) -> some View {
+    return Text(targetValue)
       .kerning(-1.0)
       .font(.largeTitle)
       .fontWeight(.black)
   }
   
-  func sliderWidget() -> some View {
+  func sliderWidget(_ value: Binding<Double>) -> some View {
     return HStack {
       Text("1")
-      Slider(value: $sliderValue)
+      Slider(value: value)
       Text("100")
     }
   }
@@ -67,12 +63,26 @@ struct ContentView: View {
    */
   func hitMeButton() -> some View {
     return Button(action: self.buttonAction) {
-      Text("Hit Me!")
+      Text("Hit Me!".uppercased())
         .kerning(-1.0)
-        .font(.largeTitle)
+        .font(.title3)
         .fontWeight(.black)
     }
-    .padding()
+    .padding(20.0)
+    .background(
+      ZStack {
+        Color("ButtonColor")
+        LinearGradient(
+          gradient: Gradient(
+            colors: [Color.white.opacity(0.3), Color.clear]),
+            startPoint: .top,
+            endPoint: .bottom
+          )
+      }
+    )
+    .foregroundColor(.white)
+    .cornerRadius(21)
+    
     .alert(
       isPresented: $isAlertVisible,
       content:{
@@ -97,7 +107,7 @@ struct ContentView: View {
           .font(.title)
           .fontWeight(.black)
       }
-      s()
+      Spacer()
       Text("Score: ")
         .kerning(-1.0)
         .font(.title)
@@ -106,7 +116,7 @@ struct ContentView: View {
         .kerning(-1.0)
         .font(.title)
         .fontWeight(.black)
-      s()
+      Spacer()
       Text("Round: ")
         .kerning(-1.0)
         .font(.title)
@@ -115,7 +125,7 @@ struct ContentView: View {
         .kerning(-1.0)
         .font(.title)
         .fontWeight(.black)
-      s()
+      Spacer()
       Button(action:{}){
         Text("Info")
           .kerning(-1.0)
@@ -129,15 +139,19 @@ struct ContentView: View {
   //: MARK: - body
   
   var body: some View {
-    VStack {
-      titleTextView("🎯 BULLSEYE APP")
+    ZStack {
+      Color("BackgroundColor")
+        .edgesIgnoringSafeArea(.all)
       VStack {
-        instructionTextView("PUT THE BULLSEYE AS CLOSE AS YOU CAN TO:")
-        targetValueTextView()
-      }.padding()
-      sliderWidget()
-      hitMeButton()
-      gameMenu()
+        titleTextView("🎯 BULLSEYE APP")
+        VStack {
+          instructionTextView("PUT THE BULLSEYE AS CLOSE AS YOU CAN TO:")
+          targetValueTextView("\(self.game.target)")
+        }.padding()
+        sliderWidget($sliderValue).padding()
+        hitMeButton()
+        gameMenu()
+      }
     }
   }
   
