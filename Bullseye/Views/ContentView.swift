@@ -7,25 +7,17 @@
 
 import SwiftUI
 
-class HeyThere {
-    var message: String
-
-    init(_ msg: String) {
-        message = msg
-    }
-    
-    func salute(_ name: String){
-        print("Hi \(name), \(self.message)")
-    }
-}
-
-/// Main View
+//: MARK: - ContentView
 struct ContentView: View {
     
-    //: Use `@State` to indicate that this should refresh the view when modified
+    // TODO: Refactor this with Game()
     @State var isAlertVisible: Bool = false
-    @State var sliderValue: Float = 50.0
+    @State var sliderValue: Float = 1.0
     @State var targetValue: Float = Float.random(in: 1...100)
+    @State private var game: Game = Game()
+    
+    //: -------------
+    //: MARK: - Views
     
     func buttonAction() -> Void {
         self.isAlertVisible = true
@@ -68,16 +60,6 @@ struct ContentView: View {
         }
     }
     
-    func showAlert(title: String, message: String) -> Alert {
-        return Alert(
-            title: Text(title),
-            message: Text(message),
-            dismissButton: .default(
-                Text("OK")
-            )
-        )
-    }
-    
     func hitMeButton() -> some View {
         return Button(action: self.buttonAction) {
             Text("Hit Me!")
@@ -89,9 +71,16 @@ struct ContentView: View {
             .alert(
                 isPresented: $isAlertVisible,
                 content:{
-                    showAlert(
-                        title: "Title",
-                        message: "Slider value: \(self.sliderValue)"
+                    let roundedValue = Int((self.sliderValue * 100.00).rounded())
+                    let roundedTarget = Int(self.targetValue.rounded())
+                    let diff = abs(roundedValue - roundedTarget)
+                    let points = 100 - diff
+                    return showAlert(
+                        title: "Hello there!",
+                        message:
+                            "The slide value is :\(roundedValue).\n" +
+                            "You scored \(self.game.points(sliderValue: roundedValue)) this round.",
+                        dismissMessage: "Awesome"
                     )
                     
                 }
@@ -111,7 +100,7 @@ struct ContentView: View {
                 .kerning(-1.0)
                 .font(.title)
                 .fontWeight(.black)
-            Text("999999")
+            Text("\(game.score)")
                 .kerning(-1.0)
                 .font(.title)
                 .fontWeight(.black)
@@ -120,7 +109,7 @@ struct ContentView: View {
                 .kerning(-1.0)
                 .font(.title)
                 .fontWeight(.black)
-            Text("999")
+            Text("\(game.round)")
                 .kerning(-1.0)
                 .font(.title)
                 .fontWeight(.black)
@@ -133,6 +122,9 @@ struct ContentView: View {
             }
         }.padding(.bottom, 20)
     }
+    
+    //:----------------
+    //: MARK: - body
     
     var body: some View {
         VStack {
@@ -147,11 +139,35 @@ struct ContentView: View {
         }
     }
     
+    //:----------------
+    //: MARK: - Actions
     
-    func getPointsForCurrentRound() -> Int {
-        return abs(Int(self.targetValue) - Int(self.sliderValue))
+    /**
+        Shows an alert message
+     
+        - Parameters:
+     
+            - title: The alert's title
+     
+            - message: The alert's message
+     
+            - dismissMessage:The alert's dismiss message
+        
+        - Returns: An `Alert` View
+     
+     */
+    func showAlert(title: String, message: String, dismissMessage: String) -> Alert {
+        return Alert(
+            title: Text(title),
+            message: Text(message),
+            dismissButton: .default(
+                Text(dismissMessage)
+            )
+        )
     }
 }
+
+//: MARK: - Previews
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
