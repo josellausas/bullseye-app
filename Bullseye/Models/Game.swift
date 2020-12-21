@@ -11,26 +11,24 @@ import Foundation
 struct Game {
   
   /// Randomly generates a number from 1 to 100
-  var target: Int = Int.random(in: 1...100)
+  var target = Int.random(in: 1...100)
   
   /// The player's score
-  var score:  Int = 0
+  var score = 0
   
   /// The current round
-  var round:  Int = 1
+  var round = 1
   
   /**
    
    Calculates how many points the user gets for his attempt
    
    - Parameters:
-   - sliderValue:  The users value
+      - sliderValue:  The users value
    
    - Returns:
-   The number of points
+      The number of points
    
    */
-  func points(sliderValue: Int) -> Int {
-    return 100 - abs(sliderValue - self.target)
-  }
+  func points(sliderValue: Int) -> Int { 100 - abs(sliderValue - self.target) }
 }
