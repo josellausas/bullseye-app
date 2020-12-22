@@ -20,7 +20,11 @@ struct RoudedImageViewStroked: View {
 
 struct PreviewView: View {
   var body: some View {
-    RoudedImageViewStroked(systemName: "arrow.counterclockwise")
+    VStack(spacing: 10) {
+      RoudedImageViewStroked(systemName: "arrow.counterclockwise")
+      RoudedImageViewStroked(systemName: "list.dash")
+    }
+    
   }
 }
 
