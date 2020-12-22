@@ -13,6 +13,7 @@
 		D71F7E66258582D500AF087A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71F7E65258582D500AF087A /* Preview Assets.xcassets */; };
 		D71F7E71258582D500AF087A /* BullseyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71F7E70258582D500AF087A /* BullseyeTests.swift */; };
 		D71F7E7C258582D500AF087A /* BullseyeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71F7E7B258582D500AF087A /* BullseyeUITests.swift */; };
+		D7B40C142590459000DA7A0F /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B40C132590459000DA7A0F /* TextViews.swift */; };
 		D7CE9FD4258EA8C4004A44D4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE9FD3258EA8C4004A44D4 /* Game.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		D71F7E7B258582D500AF087A /* BullseyeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullseyeUITests.swift; sourceTree = "<group>"; };
 		D71F7E7D258582D500AF087A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7B40C0C259036B100DA7A0F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D7B40C132590459000DA7A0F /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		D7CE9FD3258EA8C4004A44D4 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				D71F7E60258582D400AF087A /* ContentView.swift */,
+				D7B40C132590459000DA7A0F /* TextViews.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D71F7E61258582D400AF087A /* ContentView.swift in Sources */,
+				D7B40C142590459000DA7A0F /* TextViews.swift in Sources */,
 				D7CE9FD4258EA8C4004A44D4 /* Game.swift in Sources */,
 				D71F7E5F258582D400AF087A /* BullseyeApp.swift in Sources */,
 			);

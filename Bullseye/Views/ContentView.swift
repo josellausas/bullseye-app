@@ -23,24 +23,6 @@ struct ContentView: View {
     self.isAlertVisible = true
   }
   
-  func titleTextView(_ text: String) -> some View {
-    return Text(text)
-      .font(.title)
-      .fontWeight(.black)
-      .kerning(2.0)
-      .foregroundColor(Color.green)
-      .padding()
-  }
-  
-  func instructionTextView(_ text: String) -> some View {
-    return Text(text)
-      .bold()
-      .kerning(2.0)
-      .multilineTextAlignment(.center)
-      .lineSpacing(4.0)
-      .font(.title3)
-  }
-  
   func targetValueTextView(_ targetValue: String) -> some View {
     return Text(targetValue)
       .kerning(-1.0)
@@ -143,9 +125,9 @@ struct ContentView: View {
       Color("BackgroundColor")
         .edgesIgnoringSafeArea(.all)
       VStack {
-        titleTextView("🎯 BULLSEYE APP")
+        TitleTextView(text: "🎯 BULLSEYE APP")
         VStack {
-          instructionTextView("PUT THE BULLSEYE AS CLOSE AS YOU CAN TO:")
+          InstructionText(text: "PUT THE BULLSEYE AS CLOSE AS YOU CAN TO:")
           targetValueTextView("\(self.game.target)")
         }.padding()
         sliderWidget($sliderValue).padding()
@@ -162,12 +144,9 @@ struct ContentView: View {
    Shows an alert message
    
    - Parameters:
-   
-   - title: The alert's title
-   
-   - message: The alert's message
-   
-   - dismissMessage:The alert's dismiss message
+      - title: The alert's title
+      - message: The alert's message
+      - dismissMessage:The alert's dismiss message
    
    - Returns: An `Alert` View
    
@@ -188,11 +167,24 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
+      .preferredColorScheme(.dark)
       .previewLayout(
         .fixed(
           width: 896,
           height: 414
         )
       )
+    ContentView()
+      .preferredColorScheme(.dark)
+    ContentView()
+      .preferredColorScheme(.light)
+      .previewLayout(
+        .fixed(
+          width: 896,
+          height: 414
+        )
+      )
+    ContentView()
+      .preferredColorScheme(.light)
   }
 }
