@@ -31,6 +31,45 @@ struct TitleTextView: View {
   }
 }
 
+struct GameMenuView: View {
+  @Binding var game: Game
+  var body: some View {
+    HStack {
+      Button(action:{}) {
+        Text("Start Over")
+          .kerning(-1.0)
+          .font(.title)
+          .fontWeight(.black)
+      }
+      Spacer()
+      Text("Score: ")
+        .kerning(-1.0)
+        .font(.title)
+        .fontWeight(.black)
+      Text("\(game.score)")
+        .kerning(-1.0)
+        .font(.title)
+        .fontWeight(.black)
+      Spacer()
+      Text("Round: ")
+        .kerning(-1.0)
+        .font(.title)
+        .fontWeight(.black)
+      Text("\(game.round)")
+        .kerning(-1.0)
+        .font(.title)
+        .fontWeight(.black)
+      Spacer()
+      Button(action:{}){
+        Text("Info")
+          .kerning(-1.0)
+          .font(.title)
+          .fontWeight(.black)
+      }
+    }.padding(.bottom, 20)
+  }
+}
+
 struct TextViews_Previews: PreviewProvider {
   static var previews: some View {
     VStack {

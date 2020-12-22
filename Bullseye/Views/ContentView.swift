@@ -82,39 +82,7 @@ struct ContentView: View {
   }
   
   func gameMenu() -> some View {
-    return HStack {
-      Button(action:{}) {
-        Text("Start Over")
-          .kerning(-1.0)
-          .font(.title)
-          .fontWeight(.black)
-      }
-      Spacer()
-      Text("Score: ")
-        .kerning(-1.0)
-        .font(.title)
-        .fontWeight(.black)
-      Text("\(game.score)")
-        .kerning(-1.0)
-        .font(.title)
-        .fontWeight(.black)
-      Spacer()
-      Text("Round: ")
-        .kerning(-1.0)
-        .font(.title)
-        .fontWeight(.black)
-      Text("\(game.round)")
-        .kerning(-1.0)
-        .font(.title)
-        .fontWeight(.black)
-      Spacer()
-      Button(action:{}){
-        Text("Info")
-          .kerning(-1.0)
-          .font(.title)
-          .fontWeight(.black)
-      }
-    }.padding(.bottom, 20)
+    GameMenuView(game: $game)
   }
   
   //:----------------
