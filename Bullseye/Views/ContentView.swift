@@ -13,7 +13,6 @@ struct ContentView: View {
   // TODO: Refactor this with Game()
   @State var isAlertVisible = false
   @State var sliderValue = 1.0
-  @State var targetValue = Float.random(in: 1...100)
   @State private var game = Game()
   
   //: -------------
@@ -64,7 +63,10 @@ struct ContentView: View {
     )
     .foregroundColor(.white)
     .cornerRadius(21)
-    
+    .overlay(
+      RoundedRectangle(cornerRadius: 25.0)
+        .strokeBorder(Color.white, lineWidth: 2.0)
+    )
     .alert(
       isPresented: $isAlertVisible,
       content:{
