@@ -75,7 +75,7 @@ struct ContentView: View {
           title: "Hello there!",
           message:
             "The slide value is :\(roundedValue).\n" +
-            "You scored \(self.game.points(sliderValue: roundedValue)) this round.",
+            "You scored \(self.game.scorePoints(sliderValue: roundedValue)) this round.",
           dismissMessage: "Awesome"
         )
         

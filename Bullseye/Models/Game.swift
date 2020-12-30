@@ -20,7 +20,6 @@ struct Game {
   var round = 1
   
   /**
-   
    Calculates how many points the user gets for his attempt
    
    - Parameters:
@@ -28,9 +27,12 @@ struct Game {
    
    - Returns:
       The number of points
-   
    */
-  func points(sliderValue: Int) -> Int { 100 - abs(sliderValue - self.target) }
+  mutating func scorePoints(sliderValue: Int) -> Int {
+    let scored = 100 - abs(sliderValue - self.target)
+    self.score += scored
+    return scored
+  }
   
   public mutating func resetRound() {
     self.score = 0

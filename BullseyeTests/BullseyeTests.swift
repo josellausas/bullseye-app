@@ -12,6 +12,7 @@ class BullseyeTests: XCTestCase {
   
   var game: Game!
   
+  //: MARK: - Setup
   override func setUpWithError() throws {
     game = Game()
   }
@@ -20,22 +21,34 @@ class BullseyeTests: XCTestCase {
     game = nil
   }
   
+  //: MARK: - Score
   func testScorePositive() throws {
     let guess = game.target + 5
-    let score = game.points(sliderValue: guess)
+    let score = game.scorePoints(sliderValue: guess)
     XCTAssertEqual(score, 95)
   }
   
   func testScoreNegative() throws {
     let guess = game.target - 5
-    let score = game.points(sliderValue: guess)
+    let score = game.scorePoints(sliderValue: guess)
     XCTAssertEqual(score, 95)
   }
   
-  func testNewRound() throws {
-    let score = game.points(sliderValue: 10)
-    XCTAssertTrue(score == game.score)
+  func testScorePoints() throws {
+    let score = game.scorePoints(sliderValue: 10)
+    XCTAssertEqual(score, game.score)
+  }
+  
+  func testNewRoundResetsScore() throws {
+    let score = game.scorePoints(sliderValue: 10)
+    XCTAssertEqual(score, game.score)
     game.resetRound()
     XCTAssertTrue(game.score == 0)
+  }
+  
+  
+  //: MARK: - Bonus Points
+  func testBonusPoints() throws {
+    // TODO: Write a test that checks for 100 bonus points if diff is 0, 50 if <= 2
   }
 }
