@@ -14,13 +14,19 @@ struct PointsView: View {
   @Binding var game: Game
   
   var body: some View {
-    let score: Int = game.scorePoints(sliderValue: Int(sliderValue.rounded()))
+    let roundedSlider = Int(sliderValue.rounded())
+    let score: Int = game.scorePoints(sliderValue: roundedSlider)
     
     VStack(spacing: 10) {
       InstructionText(text: "Slider's value is")
-      BigNumberText(text: "\(sliderValue)")
+      BigNumberText(text: "\(roundedSlider)")
       BodyText(text: "You scored \(score) Points!\n🎉🎉🎉")
-      Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/){
+      Button(action: {
+        withAnimation {
+          isAlertVisible = false
+        }
+        game.resetRound()
+      }){
         ButtonText(text: "Start New Round")
       }
     }
@@ -29,6 +35,7 @@ struct PointsView: View {
       .background(Color("BackgroundColor"))
       .cornerRadius(21.0)
       .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: 5, y: 5)
+      .transition(.scale)
   }
 }
 

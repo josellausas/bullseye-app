@@ -18,7 +18,9 @@ struct ContentView: View {
   //: MARK: - Views
   
   func buttonAction() -> Void {
-    self.isAlertVisible = true
+    withAnimation {
+      self.isAlertVisible = true
+    }
   }
   
   func targetValueTextView(_ targetValue: String) -> some View {
@@ -83,9 +85,12 @@ struct ContentView: View {
         }.padding()
         if isAlertVisible {
           PointsView(isAlertVisible: $isAlertVisible, sliderValue: $sliderValue, game: $game)
+            .transition(.scale)
         } else {
           sliderWidget($sliderValue).padding()
+            .transition(.scale)
           hitMeButton()
+            .transition(.scale)
         }
         gameMenu()
       }
