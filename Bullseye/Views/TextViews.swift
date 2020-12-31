@@ -70,12 +70,49 @@ struct GameMenuView: View {
   }
 }
 
+struct ButtonText: View {
+  var text: String
+  var body: some View {
+    Text(text)
+      .bold()
+      .foregroundColor(Color.white)
+      .padding()
+      .frame(maxWidth: .infinity)
+      .background(Color.accentColor)
+  }
+}
+
+struct BigNumberText: View {
+  var text: String
+  var body: some View {
+    Text(text)
+      .kerning(-1.0)
+      .font(.largeTitle)
+      .fontWeight(.black)
+  }
+}
+
+struct BodyText: View {
+  var text: String
+  var body: some View {
+    Text(text)
+      .font(.subheadline)
+      .fontWeight(.semibold)
+      .multilineTextAlignment(.center)
+      .lineSpacing(12.0)
+  }
+}
+
 struct TextViews_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
       TitleTextView(text: "🎯 BULLSEYE APP")
       InstructionText(text: "PUT THE BULLSEYE AS CLOSE AS YOU CAN TO:")
+      BodyText(text: "You scored 200 Points!\n🎉🎉🎉")
+      BigNumberText(text: "89")
+      ButtonText(text: "Start New Round")
     }
+    .padding()
   }
 }
 

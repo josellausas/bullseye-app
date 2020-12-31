@@ -22,10 +22,7 @@ struct ContentView: View {
   }
   
   func targetValueTextView(_ targetValue: String) -> some View {
-    return Text(targetValue)
-      .kerning(-1.0)
-      .font(.largeTitle)
-      .fontWeight(.black)
+    BigNumberText(text: targetValue)
   }
   
   func sliderWidget(_ value: Binding<Double>) -> some View {
@@ -66,20 +63,6 @@ struct ContentView: View {
       RoundedRectangle(cornerRadius: 25.0)
         .strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth)
     )
-    .alert(
-      isPresented: $isAlertVisible,
-      content:{
-        let roundedValue = Int((self.sliderValue * 100.00).rounded())
-        return showAlert(
-          title: "Hello there!",
-          message:
-            "The slide value is :\(roundedValue).\n" +
-            "You scored \(self.game.scorePoints(sliderValue: roundedValue)) this round.",
-          dismissMessage: "Awesome"
-        )
-        
-      }
-    )
   }
   
   func gameMenu() -> some View {
@@ -98,8 +81,12 @@ struct ContentView: View {
           InstructionText(text: "PUT THE BULLSEYE AS CLOSE AS YOU CAN TO:")
           targetValueTextView("\(self.game.target)")
         }.padding()
-        sliderWidget($sliderValue).padding()
-        hitMeButton()
+        if isAlertVisible {
+          PointsView(isAlertVisible: $isAlertVisible, sliderValue: $sliderValue, game: $game)
+        } else {
+          sliderWidget($sliderValue).padding()
+          hitMeButton()
+        }
         gameMenu()
       }
     }
