@@ -46,7 +46,6 @@ class BullseyeTests: XCTestCase {
     XCTAssertTrue(game.score == 0)
   }
   
-  
   //: MARK: - Bonus Points
   func testBonusPoints() throws {
     // TODO: Write a test that checks for 100 bonus points if diff is 0, 50 if <= 2

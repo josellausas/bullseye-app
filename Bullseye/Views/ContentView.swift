@@ -15,7 +15,6 @@ struct ContentView: View {
   @State var sliderValue = 1.0
   @State private var game = Game()
   
-  //: -------------
   //: MARK: - Views
   
   func buttonAction() -> Void {
@@ -65,7 +64,7 @@ struct ContentView: View {
     .cornerRadius(21)
     .overlay(
       RoundedRectangle(cornerRadius: 25.0)
-        .strokeBorder(Color.white, lineWidth: 2.0)
+        .strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth)
     )
     .alert(
       isPresented: $isAlertVisible,
@@ -87,7 +86,6 @@ struct ContentView: View {
     GameMenuView(game: $game)
   }
   
-  //:----------------
   //: MARK: - body
   
   var body: some View {

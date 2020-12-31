@@ -11,13 +11,35 @@ import Foundation
 struct Game {
   
   /// Randomly generates a number from 1 to 100
-  var target = Int.random(in: 1...100)
+  var target: Int
   
   /// The player's score
-  var score = 0
+  var score: Int
   
   /// The current round
-  var round = 1
+  var round: Int
+  
+  
+  /// Inits a new Game
+  init() {
+    target = Int.random(in: 1...100)
+    score = 0
+    round = 1
+  }
+  
+  
+  /// Returns a random number between 1 and 100
+  func getNewRandomTarget() -> Int {
+    return Int.random(in: 1...100)
+  }
+  
+  
+  /// Starts a new round and resets score
+  public mutating func resetRound() {
+    self.score = 0
+    self.round += 1
+  }
+  
   
   /**
    Calculates how many points the user gets for his attempt
@@ -32,10 +54,5 @@ struct Game {
     let scored = 100 - abs(sliderValue - self.target)
     self.score += scored
     return scored
-  }
-  
-  public mutating func resetRound() {
-    self.score = 0
-    self.round += 1
   }
 }

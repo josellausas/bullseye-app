@@ -16,7 +16,7 @@ struct RoudedImageViewStroked: View {
       .frame(width: 56.0, height: 56.0, alignment: .center)
       .overlay(
         Circle()
-          .strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2.0)
+          .strokeBorder(Color("ButtonStrokeColor"), lineWidth: Constants.General.strokeWidth)
       )
   }
 }

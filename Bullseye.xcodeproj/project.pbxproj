@@ -16,6 +16,7 @@
 		D74CF3F32592A4C30016CB76 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CF3F22592A4C30016CB76 /* Shapes.swift */; };
 		D74CF3F82592AAAC0016CB76 /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CF3F72592AAAC0016CB76 /* RoundedViews.swift */; };
 		D74CF3FD2592B5030016CB76 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CF3FC2592B5030016CB76 /* BackgroundView.swift */; };
+		D7649FF5259C165A00BA827A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7649FF4259C165A00BA827A /* Constants.swift */; };
 		D7B40C142590459000DA7A0F /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B40C132590459000DA7A0F /* TextViews.swift */; };
 		D7CE9FD4258EA8C4004A44D4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE9FD3258EA8C4004A44D4 /* Game.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		D74CF3F22592A4C30016CB76 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		D74CF3F72592AAAC0016CB76 /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		D74CF3FC2592B5030016CB76 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		D7649FF4259C165A00BA827A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7B40C0C259036B100DA7A0F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7B40C132590459000DA7A0F /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		D7CE9FD3258EA8C4004A44D4 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				D7CE9FD3258EA8C4004A44D4 /* Game.swift */,
+				D7649FF4259C165A00BA827A /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				D74CF3F82592AAAC0016CB76 /* RoundedViews.swift in Sources */,
 				D71F7E61258582D400AF087A /* ContentView.swift in Sources */,
 				D7B40C142590459000DA7A0F /* TextViews.swift in Sources */,
+				D7649FF5259C165A00BA827A /* Constants.swift in Sources */,
 				D74CF3FD2592B5030016CB76 /* BackgroundView.swift in Sources */,
 				D74CF3F32592A4C30016CB76 /* Shapes.swift in Sources */,
 				D7CE9FD4258EA8C4004A44D4 /* Game.swift in Sources */,
