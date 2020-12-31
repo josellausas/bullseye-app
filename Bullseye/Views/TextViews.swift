@@ -103,6 +103,14 @@ struct BodyText: View {
   }
 }
 
+struct RoundedTextView: View {
+  let text: String
+  var body: some View {
+    Text(text)
+  }
+}
+
+
 struct TextViews_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
@@ -111,6 +119,7 @@ struct TextViews_Previews: PreviewProvider {
       BodyText(text: "You scored 200 Points!\n🎉🎉🎉")
       BigNumberText(text: "89")
       ButtonText(text: "Start New Round")
+      RoundedTextView(text: "1")
     }
     .padding()
   }
