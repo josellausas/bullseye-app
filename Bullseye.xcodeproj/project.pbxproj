@@ -89,6 +89,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D705D7A6259FF44D00B11951 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				D78B866A259D6DCD00E6A89C /* LeaderboardView.swift */,
+				D71F7E60258582D400AF087A /* ContentView.swift */,
+				D78B8665259D4F0B00E6A89C /* PointsView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		D705D7A7259FF45300B11951 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D74CF3FC2592B5030016CB76 /* BackgroundView.swift */,
+				D7B40C132590459000DA7A0F /* TextViews.swift */,
+				D74CF3F22592A4C30016CB76 /* Shapes.swift */,
+				D74CF3F72592AAAC0016CB76 /* RoundedViews.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		D71F7E52258582D400AF087A = {
 			isa = PBXGroup;
 			children = (
@@ -160,13 +181,8 @@
 		D7CE9FCE258EA84D004A44D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D71F7E60258582D400AF087A /* ContentView.swift */,
-				D7B40C132590459000DA7A0F /* TextViews.swift */,
-				D74CF3F22592A4C30016CB76 /* Shapes.swift */,
-				D74CF3F72592AAAC0016CB76 /* RoundedViews.swift */,
-				D74CF3FC2592B5030016CB76 /* BackgroundView.swift */,
-				D78B8665259D4F0B00E6A89C /* PointsView.swift */,
-				D78B866A259D6DCD00E6A89C /* LeaderboardView.swift */,
+				D705D7A7259FF45300B11951 /* Components */,
+				D705D7A6259FF44D00B11951 /* Screens */,
 			);
 			path = Views;
 			sourceTree = "<group>";

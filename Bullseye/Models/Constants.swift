@@ -13,4 +13,9 @@ enum Constants {
     public static let strokeWidth = CGFloat(2.0)
     public static let roundedViewLength = CGFloat(56.0)
   }
+  enum Leaderboard {
+    public static let scoreColWidth = CGFloat(50.0)
+    public static let dateColWidth = CGFloat(170.0)
+    public static let maxRowWidth = CGFloat(480.0)
+  }
 }

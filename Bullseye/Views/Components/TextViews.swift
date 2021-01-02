@@ -103,10 +103,21 @@ struct BodyText: View {
   }
 }
 
-struct RoundedTextView: View {
-  let text: String
+struct ScoreText: View {
+  var score: Int
   var body: some View {
-    Text(text)
+    Text(String(score))
+      .kerning(-1.0)
+      .font(.largeTitle)
+      .fontWeight(.black)
+  }
+}
+
+
+struct DateText: View {
+  var date: Date
+  var body: some View {
+    Text(date, style: .time)
   }
 }
 
@@ -119,9 +130,9 @@ struct TextViews_Previews: PreviewProvider {
       BodyText(text: "You scored 200 Points!\n🎉🎉🎉")
       BigNumberText(text: "89")
       ButtonText(text: "Start New Round")
-      RoundedTextView(text: "1")
+      ScoreText(score: 9000)
+      DateText(date: Date())
     }
     .padding()
   }
 }
-
