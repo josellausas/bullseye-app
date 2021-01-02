@@ -12,12 +12,16 @@ struct ContentView: View {
   
   // TODO: Refactor this with Game()
   @State var isAlertVisible = false
-  @State var sliderValue = 1.0
+  @State var sliderInput = 1.0
   @State private var game = Game()
+  @State private var roundScore: Int = 0
+  @State private var roundedSlider: Int = 0
   
   //: MARK: - Views
   
   func buttonAction() -> Void {
+    roundedSlider = Int((sliderInput * 100.0).rounded())
+    roundScore = game.scorePoints(sliderValue: roundedSlider)
     withAnimation {
       self.isAlertVisible = true
     }
@@ -84,10 +88,15 @@ struct ContentView: View {
           targetValueTextView("\(self.game.target)")
         }.padding()
         if isAlertVisible {
-          PointsView(isAlertVisible: $isAlertVisible, sliderValue: $sliderValue, game: $game)
+          PointsView(
+            isAlertVisible: $isAlertVisible,
+            sliderValue: $roundedSlider,
+            game: $game,
+            score: $roundScore
+          )
             .transition(.scale)
         } else {
-          sliderWidget($sliderValue).padding()
+          sliderWidget($sliderInput).padding()
             .transition(.scale)
           hitMeButton()
             .transition(.scale)

@@ -35,8 +35,8 @@ struct Game {
   
   
   /// Starts a new round and resets score
-  public mutating func resetRound() {
-    self.score = 0
+  public mutating func startNewRound() {
+    self.target = getNewRandomTarget()
     self.round += 1
   }
   

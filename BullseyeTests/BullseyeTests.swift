@@ -21,7 +21,34 @@ class BullseyeTests: XCTestCase {
     game = nil
   }
   
+  //: MARK: - Game Init
+  func testGameSccoreStartsAtZero() throws {
+    XCTAssertEqual(self.game.score, 0)
+  }
+  
+  func testGameGeneratesRandomNumberEachRound() throws {
+    let firstTarget: Int = game.target
+    XCTAssertNotNil(firstTarget)
+    let secondTarget: Int = game.getNewRandomTarget()
+    XCTAssertNotEqual(firstTarget, secondTarget)
+    
+  }
+  
   //: MARK: - Score
+  func testPointsScoredAreAddedToScore() throws {
+    XCTAssertEqual(0, game.score)
+    let points = game.scorePoints(sliderValue: 50)
+    XCTAssertEqual(game.score, points)
+  }
+  
+  func testScoreIsKeptThroughNewRounds() throws {
+    XCTAssertEqual(0, game.score)
+    let points = game.scorePoints(sliderValue: 50)
+    XCTAssertEqual(game.score, points)
+    let points2 = game.scorePoints(sliderValue: 50)
+    XCTAssertEqual(game.score, points + points2)
+  }
+  
   func testScorePositive() throws {
     let guess = game.target + 5
     let score = game.scorePoints(sliderValue: guess)
@@ -41,9 +68,12 @@ class BullseyeTests: XCTestCase {
   
   func testNewRoundResetsScore() throws {
     let score = game.scorePoints(sliderValue: 10)
+    let initialRound = game.round
     XCTAssertEqual(score, game.score)
-    game.resetRound()
-    XCTAssertTrue(game.score == 0)
+    
+    game.startNewRound()
+    XCTAssertTrue(game.score == score)
+    XCTAssertEqual(game.round, initialRound + 1)
   }
   
   //: MARK: - Bonus Points

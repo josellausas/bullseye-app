@@ -10,22 +10,25 @@ import SwiftUI
 struct PointsView: View {
   
   @Binding var isAlertVisible: Bool
-  @Binding var sliderValue: Double
+  @Binding var sliderValue: Int
   @Binding var game: Game
+  @Binding var score: Int
+  
+  
   
   var body: some View {
-    let roundedSlider = Int(sliderValue.rounded())
-    let score: Int = game.scorePoints(sliderValue: roundedSlider)
+    
+    // TODO: Fix this
     
     VStack(spacing: 10) {
       InstructionText(text: "Slider's value is")
-      BigNumberText(text: "\(roundedSlider)")
+      BigNumberText(text: "\(sliderValue)")
       BodyText(text: "You scored \(score) Points!\n🎉🎉🎉")
       Button(action: {
         withAnimation {
           isAlertVisible = false
         }
-        game.resetRound()
+        game.startNewRound()
       }){
         ButtonText(text: "Start New Round")
       }
@@ -42,12 +45,12 @@ struct PointsView: View {
 struct PointsView_Previews: PreviewProvider {
   
   static private var isAlertVisible = Binding.constant(false)
-  static private var sliderValue = Binding.constant(50.0)
+  static private var sliderValue = Binding.constant(50)
   static private var game = Binding.constant(Game())
-  
+  static private var score = Binding.constant(100)
   
   static var previews: some View {
-    PointsView(isAlertVisible: isAlertVisible, sliderValue: sliderValue, game: game)
+    PointsView(isAlertVisible: isAlertVisible, sliderValue: sliderValue, game: game, score: score)
       .preferredColorScheme(.dark)
       .previewLayout(
         .fixed(
@@ -55,9 +58,8 @@ struct PointsView_Previews: PreviewProvider {
           height: 414
         )
       )
-    PointsView(isAlertVisible: isAlertVisible, sliderValue: sliderValue, game: game)
-      .preferredColorScheme(.dark)
-    PointsView(isAlertVisible: isAlertVisible, sliderValue: sliderValue, game: game)
+    PointsView(isAlertVisible: isAlertVisible, sliderValue: sliderValue, game: game, score: score)
+    PointsView(isAlertVisible: isAlertVisible, sliderValue: sliderValue, game: game, score: score)
       .preferredColorScheme(.light)
       .previewLayout(
         .fixed(
@@ -65,7 +67,7 @@ struct PointsView_Previews: PreviewProvider {
           height: 414
         )
       )
-    PointsView(isAlertVisible: isAlertVisible, sliderValue: sliderValue, game: game)
+    PointsView(isAlertVisible: isAlertVisible, sliderValue: sliderValue, game: game, score: score)
       .preferredColorScheme(.light)
   }
 }
