@@ -20,11 +20,13 @@ struct RowView: View {
   
   var body: some View {
     HStack {
-      RoundedTextView(text: "\(index)")
+      RoundedTextView(text: String(index))
+      Spacer()
       ScoreText(score: score)
-        .frame(minWidth: Constants.Leaderboard.scoreColWidth)
+        .frame(width: Constants.Leaderboard.scoreColWidth)
+      Spacer()
       DateText(date: date)
-        .frame(minWidth: Constants.Leaderboard.dateColWidth)
+        .frame(width: Constants.Leaderboard.dateColWidth)
     }.background(
       RoundedRectangle(cornerRadius: .infinity)
         .strokeBorder(
