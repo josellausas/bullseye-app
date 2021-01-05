@@ -84,10 +84,11 @@ class BullseyeTests: XCTestCase {
   //: MARK: - Leaderboard
   func testLeaderboard() throws {
     game.startNewRound()
+    XCTAssertEqual(game.leaderboardEntries.count, 0)
     let _ = game.scorePoints(sliderValue: 20)
-    let _ = game.scorePoints(sliderValue: 20)
+    XCTAssertEqual(game.leaderboardEntries.count, 1)
     
-    // Should have 2 scores:
+    let _ = game.scorePoints(sliderValue: 20)
     XCTAssertEqual(game.leaderboardEntries.count, 2)
   }
 }

@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct LeaderboardView: View {
+  @Binding var leaderboardIsShowing: Bool
+  @Binding var game: Game
+  
   var body: some View {
-    VStack {
-      HeaderView()
-      LabelView()
-      RowView(index: 1, score: 100, date:Date())
+    let sortedArray = game.leaderboardEntries.sorted {
+      $0.score > $1.score
+    }
+    ZStack {
+      Color("BackgroundColor").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+      VStack(spacing: 10) {
+        HeaderView(leaderboardIsShowing: $leaderboardIsShowing)
+        LabelView()
+        VStack(spacing: 10) {
+          ForEach(sortedArray.indices) { i in
+            let entry = sortedArray[i]
+            RowView(index: i + 1, score: entry.score, date:entry.date)
+          }
+        }
+      }
     }
   }
 }
@@ -20,6 +34,7 @@ struct LeaderboardView: View {
 struct HeaderView: View {
   @Environment(\.verticalSizeClass) var verticalSizeClass
   @Environment(\.horizontalSizeClass) var horizontalSizeClass
+  @Binding var leaderboardIsShowing: Bool
   
   var body: some View {
     ZStack {
@@ -92,8 +107,11 @@ struct LabelView: View {
 }
 
 struct LeaderboardView_Previews: PreviewProvider {
+  static private var leaderboardIsShowing = Binding.constant(false)
+  static private var game = Binding.constant(Game(loadTestData: true))
+  
   static var previews: some View {
-    LeaderboardView()
+    LeaderboardView(leaderboardIsShowing: leaderboardIsShowing, game: game)
       .preferredColorScheme(.dark)
       .previewLayout(
         .fixed(
@@ -101,9 +119,9 @@ struct LeaderboardView_Previews: PreviewProvider {
           height: 414
         )
       )
-    LeaderboardView()
+    LeaderboardView(leaderboardIsShowing: leaderboardIsShowing, game: game)
       .preferredColorScheme(.dark)
-    LeaderboardView()
+    LeaderboardView(leaderboardIsShowing: leaderboardIsShowing, game: game)
       .preferredColorScheme(.light)
       .previewLayout(
         .fixed(
@@ -111,7 +129,7 @@ struct LeaderboardView_Previews: PreviewProvider {
           height: 414
         )
       )
-    LeaderboardView()
+    LeaderboardView(leaderboardIsShowing: leaderboardIsShowing, game: game)
       .preferredColorScheme(.light)
   }
 }

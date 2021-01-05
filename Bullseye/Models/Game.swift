@@ -28,11 +28,19 @@ struct Game {
   
   
   /// Inits a new Game
-  init() {
+  init(loadTestData: Bool = false) {
     target = Int.random(in: 1...100)
     score = 0
     round = 1
+    
     leaderboardEntries = []
+    if loadTestData {
+      leaderboardEntries.append(LeaderboardEntry(score: 987, date: Date()))
+      leaderboardEntries.append(LeaderboardEntry(score: 200, date: Date()))
+      leaderboardEntries.append(LeaderboardEntry(score: 100, date: Date()))
+      leaderboardEntries.append(LeaderboardEntry(score: 400, date: Date()))
+      leaderboardEntries.append(LeaderboardEntry(score: 500, date: Date()))
+    }
   }
   
   
