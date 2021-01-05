@@ -124,6 +124,16 @@ struct DateText: View {
   }
 }
 
+struct ScreenTitleText: View {
+  var text: String
+  var body: some View {
+    Text(text.uppercased())
+      .font(.title)
+      .fontWeight(.black)
+      .kerning(2.0)
+      .padding()
+  }
+}
 
 struct TextViews_Previews: PreviewProvider {
   static var previews: some View {
@@ -135,6 +145,7 @@ struct TextViews_Previews: PreviewProvider {
       ButtonText(text: "Start New Round")
       ScoreText(score: 9000)
       DateText(date: Date())
+      ScreenTitleText(text: "Title")
     }
     .padding()
   }

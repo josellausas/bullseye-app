@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct LeaderboardEntry {
+  let score: Int
+  let date: Date
+}
+
 /// The Game Model
 struct Game {
   
@@ -19,12 +24,15 @@ struct Game {
   /// The current round
   var round: Int
   
+  var leaderboardEntries: [LeaderboardEntry]
+  
   
   /// Inits a new Game
   init() {
     target = Int.random(in: 1...100)
     score = 0
     round = 1
+    leaderboardEntries = []
   }
   
   
@@ -53,6 +61,11 @@ struct Game {
   mutating func scorePoints(sliderValue: Int) -> Int {
     let scored = 100 - abs(sliderValue - self.target)
     self.score += scored
+    
+    // Add to scoreboard
+    leaderboardEntries.append(
+      LeaderboardEntry(score: scored, date: Date())
+    )
     return scored
   }
 }

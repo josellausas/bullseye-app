@@ -80,4 +80,14 @@ class BullseyeTests: XCTestCase {
   func testBonusPoints() throws {
     // TODO: Write a test that checks for 100 bonus points if diff is 0, 50 if <= 2
   }
+  
+  //: MARK: - Leaderboard
+  func testLeaderboard() throws {
+    game.startNewRound()
+    let _ = game.scorePoints(sliderValue: 20)
+    let _ = game.scorePoints(sliderValue: 20)
+    
+    // Should have 2 scores:
+    XCTAssertEqual(game.leaderboardEntries.count, 2)
+  }
 }

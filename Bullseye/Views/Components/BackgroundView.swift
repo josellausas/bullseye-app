@@ -16,7 +16,7 @@ struct BackgroundView: View {
         .padding()
         .background(
           Color("BackgroundColor")
-            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .edgesIgnoringSafeArea(.all)
         )
     }
   }
