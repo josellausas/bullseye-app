@@ -20,10 +20,12 @@ struct LeaderboardView: View {
       VStack(spacing: 10) {
         HeaderView(leaderboardIsShowing: $leaderboardIsShowing)
         LabelView()
-        VStack(spacing: 10) {
-          ForEach(sortedArray.indices) { i in
-            let entry = sortedArray[i]
-            RowView(index: i + 1, score: entry.score, date:entry.date)
+        ScrollView {
+          VStack(spacing: 10) {
+            ForEach(sortedArray.indices) { i in
+              let entry = sortedArray[i]
+              RowView(index: i + 1, score: entry.score, date:entry.date)
+            }
           }
         }
       }
